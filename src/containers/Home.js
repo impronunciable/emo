@@ -1,6 +1,6 @@
 
 import { h, Component } from 'preact';
-import debounce from 'debounce';
+import debounce from 'debounce-promise';
 import SearchBar from 'components/SearchBar';
 import List from 'components/List';
 import { fetchEmojis } from 'services/datalayer';
@@ -30,7 +30,7 @@ export default class extends Component {
     this.setState({ search });
 
     this.fetchEmojis(search)
-    .then(items => this.setState({ items }));
+    .then((items=[]) => this.setState({ items }));
   }
 
   render({}, { search, items }) {
