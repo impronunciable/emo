@@ -10,7 +10,7 @@ A simple example project using [preact](https://preactjs.com)
 
     $ npm i
 
-### Run the development servere
+### Run the development server
 
     $ npm start
     
