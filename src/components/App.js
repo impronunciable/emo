@@ -5,10 +5,10 @@ import Header from 'components/Header';
 import Home from 'containers/Home';
 import About from 'containers/About';
 
-export default () => (
+export default ({ url }) => (
   <div>
     <Header />
-    <Router>
+    <Router url={url}>
       <Home path='/' />
       <About path='/about' />
     </Router>

@@ -4,16 +4,20 @@
   "description": "How to respond with emojis? Sample app using preact",
   "main": "index.js",
   "scripts": {
-    "start": "webpack-dev-server --inline --hot --progress --content-base public --port 3333",
+    "start": "webpack --watch",
     "build": "webpack",
-    "deploy": "webpack && surge public"
+    "deploy": "webpack && surge public",
+    "server": "node server-build.js"
   },
   "keywords": [],
   "author": "Dan Zajdband <dan.zajdband@gmail.com>",
   "license": "MIT",
   "dependencies": {
     "debounce-promise": "1.1.0",
+    "express": "^4.14.0",
+    "json-loader": "^0.5.4",
     "preact": "4.8.0",
+    "preact-render-to-string": "^2.7.0",
     "preact-router": "2.0.0",
     "webpack": "1.13.1"
   },

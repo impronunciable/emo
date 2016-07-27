@@ -1,3 +1,14 @@
+
+import { h } from 'preact';
+import express from 'express';
+import render from 'preact-render-to-string';
+import Root from './src/components/App';
+
+const app = express();
+
+app.use(express.static('public'));
+
+app.get('*', (req, res) => res.send(`
 <!DOCTYPE html>
 <html>
   <head>
@@ -16,7 +27,10 @@
     </style>
   </head>
   <body>
-    <div id="root"></div>
+    <div id="root">${render(<Root url={req.path} />)}</div>
     <script src="/app.js" charset="utf-8"></script>
   </body>
-</html>
+</html> 
+`));
+
+app.listen(3333);

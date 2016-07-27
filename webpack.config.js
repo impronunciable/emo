@@ -1,7 +1,7 @@
 
 var path = require('path');
 
-module.exports = {
+var sharedConfig = {
   entry: path.join(__dirname, 'src', 'index.js'),
   output: {
     path: path.join(__dirname, 'public'),
@@ -9,15 +9,23 @@ module.exports = {
   },
   module: {
     loaders: [
-      { loader: 'babel-loader', test: /\.js$/, exclude: /node_modules/ }
+      { loader: 'babel-loader', test: /\.js$/, exclude: /node_modules/ },
+      { loader: 'json-loader', test: /\.json$/ }
     ]
   },
   resolve: {
     root: [ path.resolve('./src') ]
-  },
-  devServer: {
-    historyApiFallback: {
-      index: 'index.html'
-    }
   }
 };
+
+module.exports = [
+  sharedConfig,
+  Object.assign({}, sharedConfig, {
+    target: 'node',
+    entry: path.join(__dirname, 'server.js'),
+    output: {
+      path: __dirname,
+      filename: 'server-build.js'
+    }
+  })
+];
